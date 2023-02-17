@@ -8,8 +8,9 @@ from   map      import *
 class Game:
     def __init__(self):
         pg.init()
-        self.screen = pg.display.set_mode(resolution)
-        self.clock  = pg.time.Clock()
+        self.screen     = pg.display.set_mode(resolution)
+        self.clock      = pg.time.Clock()
+        self.delta_time = 1
         self.new_game()
     
     def new_game(self):
@@ -17,7 +18,7 @@ class Game:
 
     def update(self):
         pg.display.flip()
-        self.clock.tick(frames_per_second)
+        self.delta_time = self.clock.tick(frames_per_second)
         pg.display.set_caption(f"{self.clock.get_fps() :.1f}")
 
     def draw(self):
